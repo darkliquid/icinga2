@@ -432,6 +432,8 @@ void InfluxdbWriter::Flush()
 	HttpRequest req(stream);
 	req.RequestMethod = "POST";
 	req.RequestUrl = url;
+	if (!GetBasicUsername().IsEmpty() && !GetBasicPassword().IsEmpty())
+		req.AddHeader("Authorization", "Basic " + Base64::Encode(GetBasicUsername() + ":" + GetBasicPassword()));
 
 	try {
 		req.WriteBody(body.CStr(), body.GetLength());

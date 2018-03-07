@@ -41,6 +41,12 @@ class InfluxdbWriter : ConfigObject
 	[config, no_user_view] String password {
 		default {{{ return ""; }}}
 	};
+	[config] String basic_username {
+		default {{{ return ""; }}}
+	};
+	[config, no_user_view] String basic_password {
+		default {{{ return ""; }}}
+	};
 	[config] bool ssl_enable {
 		default {{{ return false; }}}
 	};
